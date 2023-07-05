@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    justify-content: center;
+
+}
+
+.calculator-wrapper {
+    display: flex;
+    flex: 1;
+    max-width: 200px;
+    flex-wrap: wrap;
+}
+ 
+.display {
+    background-color: lightgray;
+    min-width: 200px;
+    min-height: 50px;
+    border: black solid;
+}
+
+.key {
+
+    min-width: 50px;
+    min-height: 50px;
+}
+
+.doubleWidth {
+    width: 100px;
+}
