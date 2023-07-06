@@ -1,17 +1,16 @@
 const add = function() {
-    display.textContent = parseInt(firstNumber) + parseInt(secondNumber);
+    display.textContent = Math.round(parseFloat(firstNumber) + parseFloat(secondNumber))/10;
 }
   
 const subtract = function() {
-    display.textContent = parseInt(firstNumber) - parseInt(secondNumber);
+    display.textContent = Math.round(parseFloat(firstNumber) - parseFloat(secondNumber))/10;
 }
   
 const divide = function()  {
-    display.textContent = parseInt(firstNumber) / parseInt(secondNumber);
+    display.textContent = Math.round(parseFloat(firstNumber) / parseFloat(secondNumber))/10;
 }
-  
 const multiply = function() {
-     display.textContent = parseInt(firstNumber) * parseInt(secondNumber);
+     display.textContent = Math.round(parseFloat(firstNumber) * parseFloat(secondNumber))/10;
 }
 
 
@@ -41,6 +40,7 @@ const display = document.querySelector('.display');
 const clearKey = document.querySelector('.clearKey');
 const operators = document.querySelectorAll('.operator');
 const equalsKey = document.querySelector('.equalsKey');
+const decimal = document.querySelector('.decimal')
 
 console.log(clearKey)
 const populate = function(){
@@ -103,9 +103,18 @@ const operate = function(){
 }
 const equals = function(){
     secondNumber = display.textContent;
-
     operate();
     operator = "=";
 
 }
 equalsKey.addEventListener('click', equals);
+const addDecimal = function(){
+    //should check if a decimal is already inside the current number
+    if(display.textContent.includes('.')){
+    }else{
+        display.textContent = display.textContent + this.textContent;
+    }
+
+
+}
+decimal.addEventListener('click', addDecimal);
