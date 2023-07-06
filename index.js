@@ -18,22 +18,7 @@ const multiply = function() {
 let firstNumber;
 let secondNumber ;
 let operator = '';
-//decides what above function to use based on operator
-// const operate = function(operator, a, b){
-//     if(operator == "+"){
-//         add(a, b);
-//     }
-//     if(operator == "-"){
-//         subtract(a,b);
-//     }
-//     if(operator == "*"){
-//         multiply(a,b);
-//     }
-//     if(operator == "/"){
-//         divide(a,b);
-//     }
 
-// }
 
 const numberKeys = document.querySelectorAll('.number');
 const display = document.querySelector('.display');
@@ -101,7 +86,7 @@ const operate = function(){
         if(operator == "/"){
             divide()
         }
-    }else if(secondNumber == 0 && operator == "/"){
+    }else if(firstNumber == 0 || secondNumber == 0 && operator == "/"){
         display.textContent = "ERROR";
     } 
 }
