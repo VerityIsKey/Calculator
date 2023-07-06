@@ -1,17 +1,17 @@
 const add = function() {
-    display.textContent = firstNumber + secondNumber;
+    display.textContent = parseInt(firstNumber) + parseInt(secondNumber);
 }
   
 const subtract = function() {
-    display.textContent = firstNumber - secondNumber;
+    display.textContent = parseInt(firstNumber) - parseInt(secondNumber);
 }
   
 const divide = function()  {
-    display.textContent = firstNumber / secondNumber;
+    display.textContent = parseInt(firstNumber) / parseInt(secondNumber);
 }
   
 const multiply = function() {
-     display.textContent = firstNumber * secondNumber;
+     display.textContent = parseInt(firstNumber) * parseInt(secondNumber);
 }
 
 
@@ -56,18 +56,26 @@ const clear = function(){
     display.textContent = 0;
     firstNumber = 0;
     secondNumber = 0;
+    operator = "";
 }
 clearKey.addEventListener('click', clear)
 
 const operateKey = function(){
     //also store the second value before using the equals function if this is the second operator 
     //should also account for if a second operator is hit instead of equals
-
+    if(operator == ""){
+        //stores the firstNumber in display and the operator key
+        firstNumber = display.textContent;
+        operator = this.textContent;
+        display.textContent = 0;
+    }else{
+        secondNumber = display.textContent;
+        operate();
+        firstNumber = display.textContent;
+        display.textContent = 0;
+        operator = this.textContent;
+    }
     
-    //stores the firstNumber in display and the operator key
-    firstNumber = display.textContent;
-    operator = this.textContent;
-    display.textContent = 0;
 }
 
 operators.forEach(operator => operator.addEventListener('click', operateKey));
