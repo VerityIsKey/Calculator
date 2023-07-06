@@ -1,17 +1,16 @@
 const add = function() {
     display.textContent = (parseFloat(firstNumber) + parseFloat(secondNumber)).toFixed(1);
-    console.log(parseFloat(firstNumber))
 }
   
 const subtract = function() {
-    display.textContent = Math.round(parseFloat(firstNumber) - parseFloat(secondNumber));
+    display.textContent = (parseFloat(firstNumber) - parseFloat(secondNumber)).toFixed(1);
 }
   
 const divide = function()  {
-    display.textContent = Math.round(parseFloat(firstNumber) / parseFloat(secondNumber));
+    display.textContent = (parseFloat(firstNumber) / parseFloat(secondNumber)).toFixed(1);
 }
 const multiply = function() {
-     display.textContent = Math.round(parseFloat(firstNumber) * parseFloat(secondNumber));
+     display.textContent = (parseFloat(firstNumber) * parseFloat(secondNumber)).toFixed(1);
 }
 
 
@@ -41,12 +40,15 @@ const display = document.querySelector('.display');
 const clearKey = document.querySelector('.clearKey');
 const operators = document.querySelectorAll('.operator');
 const equalsKey = document.querySelector('.equalsKey');
-const decimal = document.querySelector('.decimal')
+const decimal = document.querySelector('.decimal');
+const backspaceKey = document.querySelector('.backspace');
 
 console.log(clearKey)
 const populate = function(){
-    
-    if(display.textContent === "0"){
+    if(operator == "="){
+        display.textContent = this.textContent
+        operator = ""
+    }else if(display.textContent === "0"){
         display.textContent = this.textContent;
     }else{
         display.textContent = display.textContent + this.textContent;  
@@ -120,3 +122,7 @@ const addDecimal = function(){
 
 }
 decimal.addEventListener('click', addDecimal);
+const backspace = function(){
+    display.textContent = display.textContent.substring(0,display.textContent.length-1);
+}
+backspaceKey.addEventListener('click', backspace)
