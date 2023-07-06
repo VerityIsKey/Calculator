@@ -1,16 +1,17 @@
 const add = function() {
-    display.textContent = Math.round(parseFloat(firstNumber) + parseFloat(secondNumber))/10;
+    display.textContent = (parseFloat(firstNumber) + parseFloat(secondNumber)).toFixed(1);
+    console.log(parseFloat(firstNumber))
 }
   
 const subtract = function() {
-    display.textContent = Math.round(parseFloat(firstNumber) - parseFloat(secondNumber))/10;
+    display.textContent = Math.round(parseFloat(firstNumber) - parseFloat(secondNumber));
 }
   
 const divide = function()  {
-    display.textContent = Math.round(parseFloat(firstNumber) / parseFloat(secondNumber))/10;
+    display.textContent = Math.round(parseFloat(firstNumber) / parseFloat(secondNumber));
 }
 const multiply = function() {
-     display.textContent = Math.round(parseFloat(firstNumber) * parseFloat(secondNumber))/10;
+     display.textContent = Math.round(parseFloat(firstNumber) * parseFloat(secondNumber));
 }
 
 
@@ -44,7 +45,8 @@ const decimal = document.querySelector('.decimal')
 
 console.log(clearKey)
 const populate = function(){
-    if(display.textContent == 0){
+    
+    if(display.textContent === "0"){
         display.textContent = this.textContent;
     }else{
         display.textContent = display.textContent + this.textContent;  
