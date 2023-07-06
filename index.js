@@ -64,13 +64,16 @@ const operateKey = function(){
     //also store the second value before using the equals function if this is the second operator 
     //should also account for if a second operator is hit instead of equals
     if(operator == ""){
-        //stores the firstNumber in display and the operator key
+        //if no previous operation has occured
         firstNumber = display.textContent;
         operator = this.textContent;
         display.textContent = 0;
     }else{
-        secondNumber = display.textContent;
-        operate();
+        //coming directly off another operation or equals
+        if(operator != "="){
+            secondNumber = display.textContent;
+            operate();  
+        }
         firstNumber = display.textContent;
         display.textContent = 0;
         operator = this.textContent;
@@ -90,14 +93,19 @@ const operate = function(){
     if(operator == "*"){
         multiply()
     }
-    if(operator == "/"){
-        divide()
-    }
+    if(secondNumber != 0){
+        if(operator == "/"){
+            divide()
+        }
+    }else if(secondNumber == 0 && operator == "/"){
+        display.textContent = "ERROR";
+    } 
 }
 const equals = function(){
     secondNumber = display.textContent;
 
     operate();
+    operator = "=";
 
 }
 equalsKey.addEventListener('click', equals);
