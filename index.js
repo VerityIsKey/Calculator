@@ -29,16 +29,26 @@ const decimal = document.querySelector('.decimal');
 const backspaceKey = document.querySelector('.backspace');
 
 console.log(clearKey)
-const populate = function(){
-    if(operator == "="){
-        display.textContent = this.textContent
-        operator = ""
-    }else if(display.textContent === "0"){
-        display.textContent = this.textContent;
+const populate = function(e){
+    if(e.type == "keydown"){
+        if(operator == "="){
+            display.textContent = this.textContent
+            operator = ""
+        }else if(display.textContent === "0"){
+            display.textContent = e.key;
+        }else{
+            display.textContent = display.textContent + e.key;  
+        }
     }else{
-        display.textContent = display.textContent + this.textContent;  
+        if(operator == "="){
+            display.textContent = this.textContent
+            operator = ""
+        }else if(display.textContent === "0"){
+            display.textContent = this.textContent;
+        }else{
+            display.textContent = display.textContent + this.textContent;  
+        }
     }
-   
 }
 numberKeys.forEach(numberKey => numberKey.addEventListener('click', populate));
 const clear = function(){
@@ -111,3 +121,12 @@ const backspace = function(){
     display.textContent = display.textContent.substring(0,display.textContent.length-1);
 }
 backspaceKey.addEventListener('click', backspace)
+
+//Keyboard support
+window.addEventListener('keydown', function(e){
+    if(e.code.includes("Digit")){
+        populate(e);
+    }
+    
+    console.log(e.code);
+});
